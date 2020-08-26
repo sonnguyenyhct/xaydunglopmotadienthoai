@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xay dung lop mo ta dien thoai</title>
+</head>
+<body>
+    <script>
+        let Mobile = function (battery,messEditor,messInbox,messSent) {
+            this.battery = battery;
+            this.messEditor = messEditor;
+            this.messInbox = messInbox;
+            this.messSent = messSent;
+            this.status = true;
+
+            this.checkBattery = function (){
+                return this.battery;
+            }
+
+            this.checkPhoneOnOff = function (){
+                return status;
+            }
+            this.phoneOnOff = function (){
+                status = !this.status;
+            }
+            this.charge = function () {
+                this.battery++;
+            }
+            this.messEditor = function (mess) {
+                this.messEditor.push(mess);
+            }
+            this.getMess = function (mess,uMobile) {
+                uMobile.messSent.push(mess);
+                this.messInbox.push(mess);
+            }
+            this.sendMess = function (mess, uMobile) {
+                this.messSent.push(mess);
+                uMobile.messInbox.push(mess);
+            }
+            this.readMessInbox = function (index) {
+                return this.messInbox[index];
+            }
+            this.readMessSend = function (index) {
+                return this.messSent[index];
+            }
+        }
+        let messEditerNokia = [];
+        let messInboxNokia = [];
+        let messSentNokia = [];
+        let messEditerIphone = [];
+        let messInboxIphone = [];
+        let messSentIphone = [];
+        let nokia = new Mobile(50,messEditerNokia,messInboxNokia, messSentNokia);
+        let iPhone = new Mobile(30,messEditerIphone,messInboxIphone, messSentIphone);
+        if (nokia.checkBattery() === 0){
+            nokia.charge();
+        }
+        if (nokia.checkPhoneOnOff()){
+            nokia.phoneOnOff();
+        }
+        nokia.sendMess("Nokia send Iphone",iPhone);
+
+        if (iPhone.checkPhoneOnOff()){
+            iPhone.phoneOnOff();
+        }
+        if (iPhone.checkPhoneOnOff()){
+            iPhone.phoneOnOff();
+        }
+        alert(iPhone.readMessInbox(0));
+
+    </script>
+</body>
+</html>
